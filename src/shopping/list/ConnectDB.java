@@ -12,6 +12,7 @@ public class ConnectDB {
     private String database_user_name = "Kotsev"; // userName
 
     private String database_user_password = "postgres@123";// password
+    //kura mi
      
   
     public Connection connect() {
