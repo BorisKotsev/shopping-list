@@ -80,6 +80,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
         Exit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         Exit.setText("EXIT");
+        Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitActionPerformed(evt);
+            }
+        });
 
         Pos.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         Pos.addActionListener(new java.awt.event.ActionListener() {
@@ -277,7 +282,7 @@ public class NewJFrame extends javax.swing.JFrame {
             conn = obj.connect();
             String SQL = "SELECT * FROM public.shop";
             
-            pst = conn.preparedStatement(SQL);
+           // pst = conn.preparedStatement(SQL);
             ResultSet res = pst.executeQuery();
             
             while(res.next()){
@@ -320,6 +325,11 @@ public class NewJFrame extends javax.swing.JFrame {
     private void SumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SumActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SumActionPerformed
+
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
+
+        System.exit(0);
+    }//GEN-LAST:event_ExitActionPerformed
 
     /**
      * @param args the command line arguments
