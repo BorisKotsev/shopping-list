@@ -9,12 +9,10 @@ public class ConnectDB {
     private String database_connection_string = "jdbc:postgresql://localhost:5432/shop";
 //Стринг, който прави връзка към базата данни
 
-    private String database_user_name = "Kotsev"; // userName
+    private String database_user_name = "bobiko2319abv"; // userName
 
-    private String database_user_password = "postgres@123";// password
-    //kura mi
+    private String database_user_password = "y9mY@Jth"; // password
      
-  
     public Connection connect() {
 //Метод, който връща връзката между базата данни и netBeans-a
         Connection conn = null;
@@ -27,7 +25,7 @@ public class ConnectDB {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
+        
         return conn;
     }
 
@@ -36,11 +34,11 @@ public class ConnectDB {
      * @param args the command line arguments
      *
      */
+    
 //    public static void main(String[] args) {
 //
-//        ConnectDB conn = new ConnectDB();
+//       ConnectDB conn = new ConnectDB();
 //
-//        conn.connect();
-//
+//       conn.connect();
 //    }
 }
