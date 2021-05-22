@@ -9,7 +9,7 @@ public class ConnectDB {
     private String database_connection_string = "jdbc:postgresql://localhost:5432/shop";
 //Стринг, който прави връзка към базата данни
 
-    private String database_user_name = "bobiko2319abv"; // userName
+    private String database_user_name = "BorisKotsev"; // userName
 
     private String database_user_password = "y9mY@Jth"; // password
      
@@ -35,10 +35,10 @@ public class ConnectDB {
      *
      */
     
-//    public static void main(String[] args) {
-//
-//       ConnectDB conn = new ConnectDB();
-//
-//       conn.connect();
-//    }
+    public static void main(String[] args) {
+
+       ConnectDB conn = new ConnectDB();
+
+       conn.connect();
+    }
 }
