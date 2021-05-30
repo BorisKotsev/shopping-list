@@ -26,6 +26,7 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     public NewJFrame() {
         initComponents();
+        AddItemToComboBox();
     }
 
     /**
@@ -57,6 +58,7 @@ public class NewJFrame extends javax.swing.JFrame {
         Price = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         textArea = new javax.swing.JTextArea();
+        items = new javax.swing.JComboBox<>();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -164,6 +166,14 @@ public class NewJFrame extends javax.swing.JFrame {
         textArea.setTabSize(10);
         jScrollPane2.setViewportView(textArea);
 
+        items.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        items.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        items.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -198,17 +208,20 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addComponent(Add)
                             .addGap(40, 40, 40)
                             .addComponent(Edit)
-                            .addGap(38, 38, 38)
+                            .addGap(30, 30, 30)
                             .addComponent(Delete))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                        .addComponent(Sums, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 46, Short.MAX_VALUE)
+                                .addComponent(Sums, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(items, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,27 +236,27 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(Product, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Pos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Price, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Product, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Pos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Price)
+                        .addComponent(items)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Sums, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Delete)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(View)
-                        .addComponent(Add)
-                        .addComponent(Edit)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(View)
+                    .addComponent(Add)
+                    .addComponent(Edit)
+                    .addComponent(Delete))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -252,7 +265,7 @@ public class NewJFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 2, Short.MAX_VALUE)
+                .addGap(0, 8, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -269,63 +282,89 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_QuantityActionPerformed
 
-public void Suma(){
+    public void Suma(){
 
-    Connection conn = null;
-    PreparedStatement pst1 = null;  
-    PreparedStatement pst2 = null;  
-    
-    double sum = 0;
-    double tmp1 = 0;
-    double tmp2 = 0;
-    
-    LinkedList <Double> tmpV1 = new LinkedList <Double>();
-    LinkedList <Double> tmpV2 = new LinkedList <Double>();
+        Connection conn = null;
+        PreparedStatement pst1 = null;  
+        PreparedStatement pst2 = null;  
 
-    try{
-        ConnectDB obj = new ConnectDB();
-        conn = obj.connect();
-        String PriceSQL = "SELECT \"Price\" FROM public.shop";
-        String QuantitySQL = "SELECT \"Quantity\" FROM public.shop";
+        double sum = 0;
+        double tmp1 = 0;
+        double tmp2 = 0;
 
-        pst1 = conn.prepareStatement(PriceSQL);
-        pst2 = conn.prepareStatement(QuantitySQL);
-        ResultSet res1 = pst1.executeQuery();
-        ResultSet res2 = pst2.executeQuery();
+        LinkedList <Double> tmpV1 = new LinkedList <Double>();
+        LinkedList <Double> tmpV2 = new LinkedList <Double>();
 
-        while(res1.next()){
-            tmp1 = Double.parseDouble(res1.getString(1));
-            tmpV1.push(tmp1);
-        }   
+        try{
+            ConnectDB obj = new ConnectDB();
+            conn = obj.connect();
+            String PriceSQL = "SELECT \"Price\" FROM public.shop";
+            String QuantitySQL = "SELECT \"Quantity\" FROM public.shop";
 
-        while(res2.next()){     
-            tmp2 = Double.parseDouble(res2.getString(1));
-            tmpV2.push(tmp2);
-        }
+            pst1 = conn.prepareStatement(PriceSQL);
+            pst2 = conn.prepareStatement(QuantitySQL);
+            ResultSet res1 = pst1.executeQuery();
+            ResultSet res2 = pst2.executeQuery();
 
-        for(int i = 0; i < tmpV1.size(); i++)
-        {
-            for(int j = 0; j < tmpV2.size(); j++)
+            while(res1.next()){
+                tmp1 = Double.parseDouble(res1.getString(1));
+                tmpV1.push(tmp1);
+            }   
+
+            while(res2.next()){     
+                tmp2 = Double.parseDouble(res2.getString(1));
+                tmpV2.push(tmp2);
+            }
+
+            for(int i = 0; i < tmpV1.size(); i++)
             {
-                if(i == j)
+                for(int j = 0; j < tmpV2.size(); j++)
                 {
-                   sum += tmpV1.get(i) * tmpV2.get(j);
+                    if(i == j)
+                    {
+                       sum += tmpV1.get(i) * tmpV2.get(j);
+                    }
                 }
             }
+
+            String sumStr = Double.toString(sum);                      
+            Sums.setText(sumStr);        
+            conn.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        String sumStr = Double.toString(sum);                      
-        Sums.setText(sumStr);        
-        conn.close();
-
-    } catch (Exception e) {
-        e.printStackTrace();
     }
-}
+    
+    public void AddItemToComboBox(){
+        
+        Connection conn = null;
+        PreparedStatement pst = null; 
+        
+        try{
+            ConnectDB obj = new ConnectDB();
+            conn = obj.connect();
+            
+            String SQL = "SELECT * FROM public.shop ORDER BY \"ID\"";
+            
+            pst = conn.prepareStatement(SQL);
+            
+            ResultSet res = pst.executeQuery();    
+            
+            while(res.next()){
+                items.addItem(res.getString("Product"));
+            }
+
+            conn.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
     
     private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
         
-        Statement statement = null;
         Connection conn = null;
         PreparedStatement pst = null;        
         String answer = "";
@@ -384,7 +423,25 @@ public void Suma(){
     }//GEN-LAST:event_AddActionPerformed
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
-        // TODO add your handling code here:
+        
+        Connection conn = null;
+        PreparedStatement pst = null;        
+        
+        try{
+            ConnectDB obj = new ConnectDB();
+            conn = obj.connect();
+ 
+            String SQL = "DELETE FROM public.shop WHERE \"ID\"=" + Pos.getText();
+            
+            pst = conn.prepareStatement(SQL);
+            pst.executeQuery();
+
+            conn.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }        
+        
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void PriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceActionPerformed
@@ -400,7 +457,36 @@ public void Suma(){
     }//GEN-LAST:event_ProductActionPerformed
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        // TODO add your handling code here:
+        
+        Connection conn = null;
+        PreparedStatement pst = null;        
+        
+        try{
+            ConnectDB obj = new ConnectDB();
+            conn = obj.connect();
+            
+            int pos = Integer.parseInt(Pos.getText());
+            String product = Product.getText(); 
+            int quantity = Integer.parseInt(Quantity.getText());
+            double price = Double.parseDouble(Price.getText());
+            
+            String SQL = "UPDATE public.shop SET \"ID\"=" + pos + ",\"Product\"=\'" + product + "\',\"Quantity\"=" + quantity + ",\"Price\"=" + price + "WHERE \"ID\"=" + pos +";";                                                
+            
+            pst = conn.prepareStatement(SQL);
+            pst.executeQuery();    
+            
+            conn.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        Pos.setText("");
+        Product.setText(""); 
+        Quantity.setText("");
+        Price.setText("");
+        
+        Suma();
     }//GEN-LAST:event_EditActionPerformed
 
     private void SumsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SumsActionPerformed
@@ -408,9 +494,44 @@ public void Suma(){
     }//GEN-LAST:event_SumsActionPerformed
 
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
-
         System.exit(0);
     }//GEN-LAST:event_ExitActionPerformed
+
+    private void itemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemsActionPerformed
+ 
+        Connection conn = null;
+        PreparedStatement pst = null;        
+        
+        try{
+            ConnectDB obj = new ConnectDB();
+            conn = obj.connect();
+            
+            String selectedItem = items.getSelectedItem().toString();
+            
+            String SQL = "SELECT * FROM public.shop WHERE \"Product\"=\'" + selectedItem + "\'";
+            
+            pst = conn.prepareStatement(SQL);
+            ResultSet res = pst.executeQuery();
+            
+            while(res.next()){
+                
+                String ID = res.getString(1);
+                String price = res.getString(4);
+                String quantity = res.getString(3);
+                
+                Pos.setText(ID);
+                Product.setText(selectedItem); 
+                Quantity.setText(quantity);
+                Price.setText(price);
+            }
+  
+            conn.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_itemsActionPerformed
 
 
     /**
@@ -459,6 +580,7 @@ public void Suma(){
     private javax.swing.JTextField Quantity;
     public javax.swing.JTextField Sums;
     private javax.swing.JButton View;
+    private javax.swing.JComboBox<String> items;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
