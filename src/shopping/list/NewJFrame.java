@@ -282,7 +282,7 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_QuantityActionPerformed
 
-    public void Suma(){
+    public void Sum(){
 
         Connection conn = null;
         PreparedStatement pst1 = null;  
@@ -336,6 +336,11 @@ public class NewJFrame extends javax.swing.JFrame {
         }
     }
     
+    public void clearComboBox(){
+        items.removeAllItems();
+    }
+    
+    
     public void AddItemToComboBox(){
         
         Connection conn = null;
@@ -359,8 +364,7 @@ public class NewJFrame extends javax.swing.JFrame {
             
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        
+        }    
     }
     
     private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
@@ -406,20 +410,22 @@ public class NewJFrame extends javax.swing.JFrame {
             String SQL = "INSERT INTO public.shop VALUES ("+ pos + ", '" + product + "' ," + quantity + "," + price +");";
             
             pst = conn.prepareStatement(SQL);
-            pst.executeQuery();    
+            pst.execute();    
             
             conn.close();
             
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+      
+        Sum();
+        clearComboBox();
+        AddItemToComboBox();
+                
         Pos.setText("");
         Product.setText(""); 
         Quantity.setText("");
         Price.setText("");
-        
-        Suma();
     }//GEN-LAST:event_AddActionPerformed
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
@@ -440,8 +446,17 @@ public class NewJFrame extends javax.swing.JFrame {
             
         } catch (Exception e) {
             e.printStackTrace();
-        }        
+        }    
         
+        clearComboBox();
+        AddItemToComboBox();
+        
+        Sum();
+        
+        Pos.setText("");
+        Product.setText(""); 
+        Quantity.setText("");
+        Price.setText("");  
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void PriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceActionPerformed
@@ -481,12 +496,12 @@ public class NewJFrame extends javax.swing.JFrame {
             e.printStackTrace();
         }
         
+        Sum();
+        
         Pos.setText("");
         Product.setText(""); 
         Quantity.setText("");
         Price.setText("");
-        
-        Suma();
     }//GEN-LAST:event_EditActionPerformed
 
     private void SumsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SumsActionPerformed
@@ -530,7 +545,6 @@ public class NewJFrame extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
     }//GEN-LAST:event_itemsActionPerformed
 
 
